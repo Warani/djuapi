@@ -1,8 +1,8 @@
 eight_points_guzzle:
     clients:
-        my_client:
+        fr_weather:
             # Write here the host where to do requests
-            # base_url: "http://target.url"
+            base_url: "http://www.meteofrance.com"
 
             options:
                 timeout: 30

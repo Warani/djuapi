@@ -5,8 +5,6 @@ namespace App\Command;
 
 use App\Document\User;
 use App\Service\DoctrineDocumentManager;
-use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
-use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
