@@ -4,25 +4,35 @@ namespace App\Controller;
 
 
 use App\Document\Region;
+use App\Document\Statement;
 use App\Document\Station;
+use App\Service\DoctrineDocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 class DefaultController extends Controller
 {
+    private $dm;
+
+    public function __construct(DoctrineDocumentManager $dm)
+    {
+        $this->dm = $dm->getManager();
+    }
+
     /**
      * @Route("/test")
-     * @return Response
+     * @Rest\View()
      */
     public function index(){
-        $region = $this->get('doctrine_mongodb')
+        $region = $this->dm
             ->getRepository(Region::class)
             ->findOneBy(['regionCode'=>'REGIN09']);
-        $stations = $this->get('doctrine_mongodb')
+        $stations = $this->dm
             ->getRepository(Station::class)->findBy(['region'=>$region]);
 
-        dump($stations);die();
+        #$statements = $dm->getManager()->getRepository(Statement::class)->findAll();
+        return $stations;
     }
 
 }

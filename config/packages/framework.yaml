@@ -11,5 +11,6 @@ framework:
 
     #esi: ~
     #fragments: ~
+    templating: { engines: ['twig'] }
     php_errors:
         log: true

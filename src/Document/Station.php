@@ -120,7 +120,7 @@ class Station
     /**
      * @return string
      */
-    public function getPostalCode(): string
+    public function getPostalCode()
     {
         return $this->postalCode;
     }

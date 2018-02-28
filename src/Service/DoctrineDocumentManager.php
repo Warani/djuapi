@@ -8,17 +8,17 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 
 class DoctrineDocumentManager
 {
- private $dm;
+    private $dm;
 
- function __construct(ManagerRegistry $documentManager)
- {
-     $this->dm = $documentManager;
- }
+    function __construct(ManagerRegistry $documentManager)
+    {
+        $this->dm = $documentManager;
+    }
 
     /**
-     * @return \Doctrine\Common\Persistence\ObjectManager|objectaæ
+     * @return \Doctrine\Common\Persistence\ObjectManager|object
      */
- public function getManager(){
-     return $this->dm->getManager();
- }
+    public function getManager(){
+        return $this->dm->getManager();
+    }
 }
