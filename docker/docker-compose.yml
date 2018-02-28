@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+    web:
+        image: nginx:alpine
+        ports:
+            - "8080:80"
+        volumes:
+            - ./symfony.conf:/etc/nginx/conf.d/symfony.conf
+            - ./../:/var/www/html
+    php:
+        build:
+            context: php7.2-mongo
+        volumes:
+            - ./../:/var/www/html
+
+    mongodb:
+        image: mongo:latest
+        container_name: "mongodb"
+        environment:
+            - ./mongo/data=/data/db
+            - ./mongo/logs=/dev/null
+        volumes:
+            - ./data/db:/data/db
+        ports:
+            - 27017:27017
+        command: mongod --smallfiles --logpath=/dev/null # --quiet
